@@ -72,7 +72,7 @@ class ListNewsAdapter extends BaseAdapter {
 
             } else {
                 Picasso.get()
-                        .load(listNewMap.get(""))
+                        .load(listNewMap.get("urlToImage"))
                         .resize(400, 400)
                         .centerCrop()
                         .into(newModel.galleryImage);

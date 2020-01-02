@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     NewsDatabase database = Room.databaseBuilder(getApplicationContext(),
                             NewsDatabase.class, "My-Database")
-                            .allowMainThreadQueries() //MAIN THREAD'DE İŞLEM YAPMAYINIZ
+                            .allowMainThreadQueries()
                             .build();
 
                     NewsDao dao = database.newsDao();
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(List<News> allNews) {
             NewsDatabase database = Room.databaseBuilder(getApplicationContext(),
                     NewsDatabase.class, "My-Database")
-                    .allowMainThreadQueries() //MAIN THREAD'DE İŞLEM YAPMAYINIZ
+                    .allowMainThreadQueries()
                     .build();
 
             NewsDao dao = database.newsDao();
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
             listNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
-                    System.out.println("Position" + position + dataList.get(position).get("author"));
                     Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
                     intent.putExtra("image", dataList.get(position).get("urlToImage"));
                     intent.putExtra("author", dataList.get(position).get("author"));
