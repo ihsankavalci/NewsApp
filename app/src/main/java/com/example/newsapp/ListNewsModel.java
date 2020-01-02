@@ -6,6 +6,8 @@ import android.widget.TextView;
 public class ListNewsModel {
     ImageView galleryImage;
     TextView author, title, details, time, content;
+    String news;
+    int someCounter;
 
     public ListNewsModel(TextView author, TextView title, TextView details, TextView time, ImageView galleryImage) {
         this.galleryImage = galleryImage;
@@ -21,6 +23,11 @@ public class ListNewsModel {
         this.title = title;
         this.time = time;
         this.content = content;
+    }
+
+    public int countSomeNews(int cnt){
+        someCounter += cnt;
+        return someCounter;
     }
 
     public ImageView getGalleryImage() {

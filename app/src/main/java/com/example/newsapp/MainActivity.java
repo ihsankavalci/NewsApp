@@ -29,12 +29,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    String API_KEY = "f81ab2c2216f460382c42e04e6b7cbd4";
     ListView listNews;
     ProgressBar loader;
     LinearLayout item;
 
-    ArrayList<HashMap<String, String>> dataList = new ArrayList<>();
+    ArrayList<HashMap<String, String>> dataNews = new ArrayList<>();
 
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         protected List<News> doInBackground(String... args) {
             try {
                 if (isNetworkConnected()) {
-                    String xml = HelperService.getRequest("https://newsapi.org/v2/top-headlines?country=tr&apiKey=" + API_KEY);
+                    String xml = HelperService.getRequest("https://newsapi.org/v2/top-headlines?country=tr&apiKey=f81ab2c2216f460382c42e04e6b7cbd4");
                     JSONObject jsonResponse = new JSONObject(xml);
                     JSONArray jsonArray = jsonResponse.optJSONArray("articles");
                     List<News> allNews = Arrays.asList(new Gson().fromJson(jsonArray.toString(), News[].class));
@@ -114,21 +113,21 @@ public class MainActivity extends AppCompatActivity {
                     dao.insertNews(news);
                 }
 
-                dataList.add(map);
+                dataNews.add(map);
             }
 
-            ListNewsAdapter adapter = new ListNewsAdapter(MainActivity.this, dataList);
+            ListNewsAdapter adapter = new ListNewsAdapter(MainActivity.this, dataNews);
             listNews.setAdapter(adapter);
 
             listNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
                     Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                    intent.putExtra("image", dataList.get(position).get("urlToImage"));
-                    intent.putExtra("author", dataList.get(position).get("author"));
-                    intent.putExtra("title", dataList.get(position).get("title"));
-                    intent.putExtra("content", dataList.get(position).get("content"));
-                    intent.putExtra("publishedAt", dataList.get(position).get("publishAt"));
+                    intent.putExtra("image", dataNews.get(position).get("urlToImage"));
+                    intent.putExtra("author", dataNews.get(position).get("author"));
+                    intent.putExtra("title", dataNews.get(position).get("title"));
+                    intent.putExtra("content", dataNews.get(position).get("content"));
+                    intent.putExtra("publishedAt", dataNews.get(position).get("publishAt"));
                     startActivity(intent);
                 }
             });

@@ -19,7 +19,13 @@ public class DetailsActivity extends AppCompatActivity {
     TextView title;
     TextView publishedAt;
     ImageView image;
+    String news;
+    int someCounter;
 
+    public int countSomeNews(int cnt){
+        someCounter += cnt;
+        return someCounter;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
