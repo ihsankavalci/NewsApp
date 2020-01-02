@@ -33,31 +33,32 @@
         android:orientation="vertical"
         android:layout_weight="7"
         >
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#000"
-            android:shadowRadius="1.0"
-            android:textColor="#666666"
-            android:textSize="17sp"
             android:layout_marginBottom="5dp"
+            android:ellipsize="end"
             android:maxLines="2"
             android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:text="This is news title"/>
+            android:shadowColor="#000"
+            android:shadowRadius="1.0"
+            android:text="This is news title"
+            android:textColor="#FF5722"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#777777"
-            android:textSize="16sp"
+            android:ellipsize="end"
             android:maxLines="2"
             android:minLines="2"
             android:scrollHorizontally="true"
-            android:ellipsize="end"
-            android:text="This is news description bla bla bla..."/>
+            android:text="This is news description bla bla bla..."
+            android:textColor="#422E2E"
+            android:textSize="16sp" />
 
 
 
